@@ -56,6 +56,7 @@ end
 %% Generate plot of raw data ==============================================
 [fid, message] = fopen(fileNameStr, 'rb');
 
+% If the file is opened successfully
 if (fid > 0)
     % Move the starting point of processing. Can be used to start the
     % signal processing at any point in the data record (e.g. for long
@@ -63,6 +64,7 @@ if (fid > 0)
     fseek(fid, settings.skipNumberOfBytes, 'bof');    
     
     % Find number of samples per spreading code
+    % The length of each spreading code is 1ms in time
     samplesPerCode = round(settings.samplingFreq / ...
                            (settings.codeFreqBasis / settings.codeLength));
                       
@@ -83,6 +85,7 @@ if (fid > 0)
     timeScale = 0 : 1/settings.samplingFreq : 5e-3;    
     
     %--- Time domain plot -------------------------------------------------
+    %Plot the data during 1/50ms
     subplot(2, 2, 1);
     plot(1000 * timeScale(1:round(samplesPerCode/50)), ...
          data(1:round(samplesPerCode/50)));
@@ -103,7 +106,8 @@ if (fid > 0)
     
     %--- Histogram --------------------------------------------------------
     subplot(2, 2, 3.5);
-    hist(data, -128:128)
+    %(data, -128:128)    
+    histogram(data, -16:16)
     
     dmax = max(abs(data)) + 1;
     axis tight;
