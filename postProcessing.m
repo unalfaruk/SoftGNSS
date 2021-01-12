@@ -78,11 +78,12 @@ if (fid > 0)
                            (settings.codeFreqBasis / settings.codeLength));
         
         % Read data for acquisition. 11ms of signal are needed for the fine
-        % frequency estimation
+        % frequency estimation        
         data = fread(fid, 11*samplesPerCode, settings.dataType)';
 
         %--- Do the acquisition -------------------------------------------
         disp ('   Acquiring satellites...');
+        %data is a piece(11ms length) of data for acquisition
         acqResults = acquisition(data, settings);
 
         plotAcquisition(acqResults);

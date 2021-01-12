@@ -59,7 +59,7 @@ signal0DC = longSignal - mean(longSignal);
 % Find sampling period
 ts = 1 / settings.samplingFreq;
 
-% Find phase points of the local carrier wave 
+% Find phase points of the local carrier wave
 phasePoints = (0 : (samplesPerCode-1)) * 2 * pi * ts;
 
 % Number of the frequency bins for the given acquisition band (500Hz steps)
@@ -113,8 +113,10 @@ for PRN = settings.acqSatelliteList
         Q2      = cosCarr .* signal2;
 
         %--- Convert the baseband signal to frequency domain --------------
-        IQfreqDom1 = fft(I1 + j*Q1);
-        IQfreqDom2 = fft(I2 + j*Q2);
+        %IQfreqDom1 = fft(I1 + j*Q1);
+        %IQfreqDom2 = fft(I2 + j*Q2);
+        IQfreqDom1 = fft(I1 + 1i*Q1);
+        IQfreqDom2 = fft(I2 + 1i*Q2);
 
         %--- Multiplication in the frequency domain (correlation in time
         %domain)
