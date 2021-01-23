@@ -54,6 +54,7 @@ samplesPerCode = round(settings.samplingFreq / ...
 signal1 = longSignal(1 : samplesPerCode);
 signal2 = longSignal(samplesPerCode+1 : 2*samplesPerCode);
 
+%DC offset
 signal0DC = longSignal - mean(longSignal); 
 
 % Find sampling period
@@ -136,6 +137,13 @@ for PRN = settings.acqSatelliteList
         end
         
     end % frqBinIndex = 1:numberOfFrqBins
+    
+%% Alternative method
+% 1. Find the max peak values of each row (results)
+% 2. Find the max value of the array of the result of 1, it is frqBinIndex that we're looking
+% 3. Analyse the result(frqBinIndex,:)
+% 4. I think the ratio between peakSize/meanValue is enough to decide the acqRes
+% TO-DO for me
 
 %% Look for correlation peaks in the results ==============================
     % Find the highest peak and compare it to the second highest peak
@@ -185,7 +193,6 @@ for PRN = settings.acqSatelliteList
         
         codeValueIndex = floor((ts * (1:10*samplesPerCode)) / ...
                                (1/settings.codeFreqBasis));
-                           
         longCaCode = caCode((rem(codeValueIndex, 1023) + 1));
     
         %--- Remove C/A code modulation from the original signal ----------
