@@ -6,5 +6,7 @@ I am studying GNSS topics for my thesis. To get used to the overall GNSS basical
 
 When I feel completely ready on it with perfect sample data. I will make a basic guide for the usage of anyone.
 
+**The sample signal I use:** GPSdata-DiscreteComponents-fs38_192-if9_55.bin (I will upload it ASAP)
+
 ## Collaboration
 Collaborations are welcome. Please send me a message about it.
