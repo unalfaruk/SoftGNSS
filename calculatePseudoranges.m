@@ -56,7 +56,18 @@ travelTime = inf(1, settings.numberOfChannels);
 samplesPerCode = round(settings.samplingFreq / ...
                         (settings.codeFreqBasis / settings.codeLength));
 
-%--- For all channels in the list ... 
+%% WORKAROUND for THE ERROR BELOW
+% There was an error here because of the type of channelList
+% Expected one output from a curly brace or dot indexing expression, but there were 8 results.
+% Error in calculatePseudoranges (line 67)
+%         trackResults(channelNr).absoluteSample(msOfTheSignal(channelNr)) / samplesPerCode;
+% Error in postNavigation (line 156)
+%     navSolutions.channel.rawP(:, currMeasNr) = calculatePseudoranges(... 
+% The list was a column mantrix so the loop could not iterate the channelList
+channelList = channelList(:)';     %Convert the matrix into a row matrix
+
+%%
+% --- For all channels in the list ... 
 for channelNr = channelList
 
     %--- Compute the travel times -----------------------------------------    
