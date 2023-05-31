@@ -6,7 +6,7 @@ I am studying GNSS topics for my thesis. To get used to the overall GNSS basical
 
 When I feel completely ready on it with perfect sample data. I will make a basic guide for the usage of anyone.
 
-**The sample signal I use:** GPSdata-DiscreteComponents-fs38_192-if9_55.bin (I will upload it ASAP)
+**The sample signal I use:** GPSdata-DiscreteComponents-fs38_192-if9_55.bin ([Download](https://drive.google.com/file/d/1tqEsyAGX6abRyv4urq49ptkkf_r2MoR9/view?usp=share_link))
 
 ## Improvement(s)
 1. Solved the error below with a workaround. (*calculatePseudoranges.m* error)
